@@ -1,0 +1,295 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information and interest preferences",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique Firebase Auth UID"
+        },
+        "username": {
+          "type": "string",
+          "description": "Unique handle for the user"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the user"
+        },
+        "bio": {
+          "type": "string",
+          "description": "Short bio description"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "Profile picture URL or avatar identifier"
+        },
+        "interests": {
+          "type": "array",
+          "description": "User topic interests used for AI recommendations"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of account creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of profile update"
+        }
+      },
+      "required": ["userId", "username", "displayName", "createdAt"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "Feed post created by a user",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Document ID"
+        },
+        "authorId": {
+          "type": "string",
+          "description": "UID of the post creator"
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Name of the post author"
+        },
+        "authorUsername": {
+          "type": "string",
+          "description": "Handle of the post author"
+        },
+        "authorAvatarUrl": {
+          "type": "string",
+          "description": "Avatar of author"
+        },
+        "content": {
+          "type": "string",
+          "description": "Post body text"
+        },
+        "mediaUrl": {
+          "type": "string",
+          "description": "Optional image or media link"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Category tags for AI recommendation match"
+        },
+        "likesCount": {
+          "type": "integer",
+          "description": "Number of likes on this post"
+        },
+        "commentsCount": {
+          "type": "integer",
+          "description": "Number of comments on this post"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of post creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last edit"
+        }
+      },
+      "required": ["id", "authorId", "authorName", "content", "createdAt"]
+    },
+    "PostLike": {
+      "title": "PostLike",
+      "description": "Record of a user liking a post",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "UID of the user who liked"
+        },
+        "postId": {
+          "type": "string",
+          "description": "ID of the liked post"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the like"
+        }
+      },
+      "required": ["userId", "postId", "createdAt"]
+    },
+    "PostComment": {
+      "title": "PostComment",
+      "description": "Comment left on a post",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Comment ID"
+        },
+        "postId": {
+          "type": "string",
+          "description": "Post ID"
+        },
+        "authorId": {
+          "type": "string",
+          "description": "UID of comment author"
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Author display name"
+        },
+        "authorAvatarUrl": {
+          "type": "string",
+          "description": "Author avatar URL"
+        },
+        "content": {
+          "type": "string",
+          "description": "Comment text"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of comment"
+        }
+      },
+      "required": ["id", "postId", "authorId", "authorName", "content", "createdAt"]
+    },
+    "Story": {
+      "title": "Story",
+      "description": "Ephemeral 24-hour visual story",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Story ID"
+        },
+        "authorId": {
+          "type": "string",
+          "description": "UID of author"
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Name of author"
+        },
+        "authorAvatarUrl": {
+          "type": "string",
+          "description": "Avatar of author"
+        },
+        "caption": {
+          "type": "string",
+          "description": "Story caption text"
+        },
+        "mediaUrl": {
+          "type": "string",
+          "description": "Media image or asset"
+        },
+        "backgroundColor": {
+          "type": "string",
+          "description": "Background styling hex code"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of story creation"
+        }
+      },
+      "required": ["id", "authorId", "authorName", "createdAt"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Direct message conversation between users",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Conversation ID"
+        },
+        "participantIds": {
+          "type": "array",
+          "description": "UIDs of the participants"
+        },
+        "lastMessage": {
+          "type": "string",
+          "description": "Preview of the most recent message"
+        },
+        "lastSenderId": {
+          "type": "string",
+          "description": "UID of the last sender"
+        },
+        "lastUpdatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of last message"
+        }
+      },
+      "required": ["id", "participantIds", "lastUpdatedAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A single direct message in a conversation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Message ID"
+        },
+        "conversationId": {
+          "type": "string",
+          "description": "Parent conversation ID"
+        },
+        "senderId": {
+          "type": "string",
+          "description": "UID of message sender"
+        },
+        "senderName": {
+          "type": "string",
+          "description": "Name of message sender"
+        },
+        "text": {
+          "type": "string",
+          "description": "Message content"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of message"
+        }
+      },
+      "required": ["id", "conversationId", "senderId", "senderName", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profiles indexed by UID"
+    },
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/Post" },
+      "description": "Public social posts for feed"
+    },
+    "/posts/{postId}/likes/{userId}": {
+      "schema": { "$ref": "#/entities/PostLike" },
+      "description": "Per-user likes on a post"
+    },
+    "/posts/{postId}/comments/{commentId}": {
+      "schema": { "$ref": "#/entities/PostComment" },
+      "description": "Comments attached to a post"
+    },
+    "/stories/{storyId}": {
+      "schema": { "$ref": "#/entities/Story" },
+      "description": "Active stories shared by users"
+    },
+    "/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "Direct message chat channels"
+    },
+    "/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Chat messages within a conversation"
+    }
+  }
+}

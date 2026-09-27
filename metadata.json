@@ -1,0 +1,6 @@
+{
+  "name": "SYNQ",
+  "description": "Personalized social media app featuring feeds, stories, messages, and AI-driven content recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

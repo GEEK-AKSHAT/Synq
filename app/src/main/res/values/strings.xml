@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SYNQ</string>
+    <string name="tagline">Next-gen social feed with intelligent discovery</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="feed_title">SYNQ Feed</string>
+    <string name="explore_title">AI Discovery</string>
+    <string name="messages_title">Direct Messages</string>
+    <string name="profile_title">Profile</string>
+    <string name="stories_title">Stories</string>
+</resources>
